@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 
-import com.actvn.shopapp.api.adapter.StoreAdapter;
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.service.UserService;
@@ -102,8 +101,6 @@ public class StoreFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setAdapter(storeAdapter);
-
-
 
         cardViewMeat.setOnClickListener(new View.OnClickListener() {
             @Override

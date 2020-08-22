@@ -1,4 +1,4 @@
-package com.actvn.shopapp.api.adapter;
+package com.actvn.shopapp.fragment;
 
 
 import android.content.Context;
@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Data;
-import com.actvn.shopapp.fragment.StoreFragment;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;

@@ -48,7 +48,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         Data data = datas.get(position);
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.txtTitle.setText(String.valueOf(data.getDescriptions().get(1).getContent()));
+        holder.txtTitle.setText(String.valueOf(data.getDescriptions().get(1).getName()));
         holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ " đ"));
 
         Glide.with(context).load(String.valueOf(BASE_URL + data.getImage()))

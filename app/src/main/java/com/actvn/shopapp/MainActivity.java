@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionToolbar();
         addControl();
         setIconTablayout();
-        setScrollView();
+        //setScrollView();
         //search();
     }
 
@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void setScrollView() {
-/*
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -114,8 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-*/
-
     }
 
     private void search() {
@@ -157,9 +154,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent itQuestion = new Intent(getApplicationContext(), QuestionActivity.class);
                 startActivity(itQuestion);
                 break;
-            case R.id.nav_exit:
-                finish();
-                break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

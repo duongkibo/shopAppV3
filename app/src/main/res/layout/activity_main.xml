@@ -18,6 +18,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarMain"
+                android:background="@color/green"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:title="Store"
@@ -26,6 +27,7 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabFace"
                 android:layout_width="match_parent"
+                android:background="@color/green"
                 android:layout_height="wrap_content"
                 android:layoutMode="opticalBounds"
                 app:tabIconTint="#1F915F"
