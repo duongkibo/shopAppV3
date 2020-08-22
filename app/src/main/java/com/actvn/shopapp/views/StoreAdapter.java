@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,15 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Data;
-import com.actvn.shopapp.api.model.Item;
+import com.actvn.shopapp.fragment.StoreFragment;
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> {
-    public static final String BASE_URL = "http://app.baomoiday.net/public/";
+    public static final String PRODUCT_URL = "http://app.baomoiday.net/public/";
     private List<Data> datas;
     private Context context;
 
@@ -34,7 +34,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product,null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_item,null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -44,8 +44,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         Data data = datas.get(position);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtName.setText(String.valueOf(data.getDescriptions().get(1).getName()));
-        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ " đ"));
-        Glide.with(context).load((BASE_URL + data.getImage()))
+        holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "₫"));
+        Glide.with(context).load((PRODUCT_URL + data.getImage()))
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(holder.imgItem);
@@ -60,13 +60,15 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         ImageView imgItem;
         TextView txtName;
         TextView txtCost;
+        Button btnView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgItem = itemView.findViewById(R.id.img);
-            txtName = itemView.findViewById(R.id.txtTitle);
+            imgItem = itemView.findViewById(R.id.imgItem);
+            txtName = itemView.findViewById(R.id.txtName);
             txtCost = itemView.findViewById(R.id.txtCost);
+            btnView = itemView.findViewById(R.id.btnView);
         }
     }
 

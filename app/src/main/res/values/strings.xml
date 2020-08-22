@@ -11,6 +11,7 @@
     <string name="skip">SKIP</string>
 
     <string name="search_hint">Search Here...</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

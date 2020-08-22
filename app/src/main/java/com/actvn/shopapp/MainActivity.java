@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.actvn.shopapp.fragment.CartFragment;
@@ -30,9 +31,14 @@ import com.actvn.shopapp.login.logout.LogoutActivity;
 import com.actvn.shopapp.search.SearchActivity;
 import com.actvn.shopapp.search.SearchSuggestions;
 import com.actvn.shopapp.utils.ConstApp;
+import com.actvn.shopapp.views.HelpActivity;
+import com.actvn.shopapp.views.LocatorActivity;
+import com.actvn.shopapp.views.QuestionActivity;
+import com.actvn.shopapp.views.TermActivity;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -87,10 +93,13 @@ public class MainActivity extends AppCompatActivity {
         vpgFace = findViewById(R.id.vpgFace);
         tabFace = findViewById(R.id.tabFace);
         toolbar = findViewById(R.id.toolbarMain);
-        scrollView = findViewById(R.id.scrollViewStore);
+//        scrollView = findViewById(R.id.scrollViewStore);
         drawerLayout = findViewById(R.id.drawerLayout);
-
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
+
+
 
     private void setScrollView() {
 /*
@@ -124,6 +133,49 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                Intent itHome = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(itHome);
+                break;
+            case R.id.nav_locator:
+                Intent itLocator = new Intent(getApplicationContext(), LocatorActivity.class);
+                startActivity(itLocator);
+                break;
+            case R.id.nav_term:
+                Intent itTerm = new Intent(getApplicationContext(), TermActivity.class);
+                startActivity(itTerm);
+                break;
+            case R.id.nav_help:
+                Intent itHelp = new Intent(getApplicationContext(), HelpActivity.class);
+                startActivity(itHelp);
+                break;
+            case R.id.nav_question:
+                Intent itQuestion = new Intent(getApplicationContext(), QuestionActivity.class);
+                startActivity(itQuestion);
+                break;
+            case R.id.nav_exit:
+                finish();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawerLayout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     private void actionToolbar() {
         setSupportActionBar(toolbar);

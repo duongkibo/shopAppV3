@@ -1,13 +1,11 @@
 package com.actvn.shopapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
+
 import com.actvn.shopapp.api.adapter.StoreAdapter;
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.utils.ConstApp;
-import com.actvn.shopapp.utils.ShareStoreUtils;
+import com.actvn.shopapp.views.PhoneActivity;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,13 +42,12 @@ public class StoreFragment extends Fragment {
     private CardView cardViewFish;
     private CardView cardViewFruits;
     private CardView cardViewVegetable;
-    private ViewFlipper viewFlipper;
     private View view;
     private StoreAdapter storeAdapter;
     private UserService userService;
     private RecyclerView recyclerView;
     private List<Data> datas = new ArrayList<>();
-    private Products products;
+
 
     @Nullable
     @Override
@@ -60,23 +60,38 @@ public class StoreFragment extends Fragment {
         client.addInterceptor(loggingInterceptor);
 
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(ConstApp.BASE_URL)
+                .baseUrl(ConstApp.PRODUCT_URL)
                 .client(client.build()).addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();
         userService = retrofit.create(UserService.class);
-
+        denzcokunView();
         initViewss();
         loadItem();
+
         return view;
+    }
+
+    // Slider
+    private void denzcokunView(){
+        ImageSlider imageSlider = view.findViewById(R.id.slider);
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/800-300-800x300-6.png"));
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/reno4-chung-800-300-800x300.png"));
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/800-300-800x300-9.png"));
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/a51-71-800-300-800x300.png"));
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/800-300-800x300-4.png"));
+        slideModels.add(new SlideModel("https://cdn.tgdd.vn/2020/08/banner/800-300-800x300-8.png"));
+
+        imageSlider.setImageList(slideModels,false);
     }
 
     private void initViewss() {
         storeAdapter = new StoreAdapter(datas, getContext());
 
-        viewFlipper = view.findViewById(R.id.viewFlipper);
+        /*viewFlipper = view.findViewById(R.id.viewFlipper);
         viewFlipper.setFlipInterval(3000);
-        viewFlipper.setAutoStart(true);
+        viewFlipper.setAutoStart(true);*/
 
         cardViewMeat = view.findViewById(R.id.cardviewMeat);
         cardViewFish = view.findViewById(R.id.cardviewFish);
@@ -88,10 +103,13 @@ public class StoreFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setAdapter(storeAdapter);
 
+
+
         cardViewMeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), PhoneActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -118,15 +136,17 @@ public class StoreFragment extends Fragment {
         });
     }
 
+    private void GetNewItem() {
+
+    }
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
 
-    private void GetNewItem() {
-
-    }
-
+    // Load Feature Product
     private void loadItem() {
         Call<Products> call = userService.getProducts();
 
