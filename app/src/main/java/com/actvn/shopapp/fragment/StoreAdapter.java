@@ -2,6 +2,7 @@ package com.actvn.shopapp.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Data;
+import com.actvn.shopapp.views.ProptiesActivity;
 import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Properties;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> {
     public static final String PRODUCT_URL = "http://app.baomoiday.net/public/";
@@ -39,8 +43,8 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Data data = datas.get(position);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final Data data = datas.get(position);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtName.setText(String.valueOf(data.getDescriptions().get(1).getName()));
         holder.txtCost.setText(String.valueOf(decimalFormat.format(data.getCost())+ "₫"));
@@ -48,6 +52,19 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(holder.imgItem);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(holder.itemView.getContext(), ProptiesActivity.class);
+                intent.putExtra("imgs",PRODUCT_URL + data.getImage());
+                intent.putExtra("money",data.getCost()+"đ");
+                intent.putExtra("name",data.getDescriptions().get(1).getName());
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -60,10 +77,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         TextView txtName;
         TextView txtCost;
         Button btnView;
+        CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            cardView = itemView.findViewById(R.id.cardView);
             imgItem = itemView.findViewById(R.id.imgItem);
             txtName = itemView.findViewById(R.id.txtName);
             txtCost = itemView.findViewById(R.id.txtCost);
