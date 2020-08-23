@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.actvn.shopapp.MainActivity;
 import com.actvn.shopapp.R;
@@ -22,6 +24,7 @@ import com.actvn.shopapp.WellcomeActivity;
 import com.actvn.shopapp.api.model.User;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.login.LoginActivity;
+import com.actvn.shopapp.order.OrderActivity;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
 
@@ -115,7 +118,8 @@ public class ProfileFragment extends Fragment {
             lnOrder.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(getContext(), OrderActivity.class);
+                    startActivity(intent);
                 }
             });
 

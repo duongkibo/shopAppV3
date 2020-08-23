@@ -59,7 +59,7 @@ public class StoreFragment extends Fragment {
         client.addInterceptor(loggingInterceptor);
 
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(ConstApp.PRODUCT_URL)
+                .baseUrl(ConstApp.BASE_URL)
                 .client(client.build()).addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();

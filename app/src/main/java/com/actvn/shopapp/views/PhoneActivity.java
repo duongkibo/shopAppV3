@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,6 +49,7 @@ public class PhoneActivity extends AppCompatActivity {
 
         rvPhone.setHasFixedSize(true);
         rvPhone.setLayoutManager(new LinearLayoutManager(this));
+        rvPhone.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         phoneAdapter = new PhoneAdapter(phones,this);
         rvPhone.setAdapter(phoneAdapter);
 

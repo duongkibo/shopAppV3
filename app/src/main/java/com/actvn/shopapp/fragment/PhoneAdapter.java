@@ -31,7 +31,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parse_item, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -60,10 +60,10 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardviewPhone);
-            imgItem = itemView.findViewById(R.id.imgItemPhone);
-            txtTitle = itemView.findViewById(R.id.txtTitlePhone);
-            txtCost = itemView.findViewById(R.id.txtCostPhone);
+            cardView = itemView.findViewById(R.id.cardViewProduct);
+            imgItem = itemView.findViewById(R.id.img);
+            txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtCost = itemView.findViewById(R.id.txtCost);
         }
     }
 }

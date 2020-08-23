@@ -3,6 +3,7 @@ package com.actvn.shopapp.api.service;
 
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Login;
+import com.actvn.shopapp.api.model.Order;
 import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.model.Register;
 import com.actvn.shopapp.api.model.ResultLogin;
@@ -28,15 +29,12 @@ public interface UserService {
     Call<ResultRegister> create(@Body Register register);
 
 
-    @GET("api/auth/user")
-    Call<ResponseBody> getSecret(@Header("Authorization") String access_token);
 
-    /*
-        @GET("/public/api/products")
-        Call<ResultProduct> getProduct (@Body ResultProduct resultProduct);
-    */
     @GET("api/auth/user")
     Call<User> getUser(@Header("Authorization") String access_token);
+
+    @GET("api/auth/orders")
+    Call<Order> getOrder(@Header("Authorization") String access_token);
 
     @GET("api/products")
     Call<Products> getProducts();

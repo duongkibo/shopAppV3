@@ -205,7 +205,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        toolbar.setVisibility(View.VISIBLE);
                         toolbar.setTitle("Store");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
@@ -213,7 +212,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         break;
                     case 1:
-                        toolbar.setVisibility(View.GONE);
                         toolbar.setTitle("Cart");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
@@ -221,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                         break;
                     case 2:
-                        toolbar.setVisibility(View.GONE);
                         toolbar.setTitle("Profile");
                         tabFace.getTabAt(0).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);
                         tabFace.getTabAt(1).getIcon().setColorFilter(Color.parseColor("#1F915F"), PorterDuff.Mode.SRC_IN);

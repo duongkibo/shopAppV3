@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Description;
+import com.actvn.shopapp.views.ProptiesActivity;
 import com.bumptech.glide.Glide;
 
 
@@ -44,8 +46,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Data data = datas.get(position);
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        final Data data = datas.get(position);
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtTitle.setText(String.valueOf(data.getDescriptions().get(1).getName()));
@@ -55,6 +57,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(holder.img);
+
+        holder.cardViewProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(holder.itemView.getContext(), ProptiesActivity.class);
+                intent.putExtra("imgs",BASE_URL + data.getImage());
+                intent.putExtra("money",data.getCost()+"đ");
+                intent.putExtra("name",data.getDescriptions().get(1).getName());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -69,6 +83,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
         TextView txtTitle;
         TextView txtCost;
         ImageView img;
+        CardView cardViewProduct;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,16 +91,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyViewHold
             txtTitle = itemView.findViewById(R.id.txtTitle);
             txtCost = itemView.findViewById(R.id.txtCost);
             img = itemView.findViewById(R.id.img);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    /*Intent intent = new Intent(context, DetailActivity.class);
-                    context.startActivity(intent);*/
-                }
-            });
-
-
+            cardViewProduct = itemView.findViewById(R.id.cardViewProduct);
         }
 
     }

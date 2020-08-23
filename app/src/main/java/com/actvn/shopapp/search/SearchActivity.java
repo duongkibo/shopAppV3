@@ -37,6 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -54,8 +55,6 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
-
 
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -81,7 +80,7 @@ public class SearchActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewSearch);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        layoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.setNestedScrollingEnabled(true);
@@ -129,22 +128,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private void loadJson(final String keyword) {
 
-        /*userService.getProducts().enqueue(new Callback<Products>() {
-            @Override
-            public void onResponse(Call<Products> call, Response<Products> response) {
-                if (response.isSuccessful() && response.body().getData() != null){
-                    List<Data> result = response.body().getData();
-                    datas.clear();
-                    datas.addAll(result);
-                    searchAdapter = new SearchAdapter(SearchActivity.this, datas);
-                    recyclerView.setAdapter(searchAdapter);
-                    searchAdapter.notifyDataSetChanged();
-                }
-            }
-            @Override
-            public void onFailure(Call<Products> call, Throwable t) {
-            }
-        });*/
         Call<Products> call;
         if (keyword.length() > 0){
             call = userService.getSearchProducts(keyword);
@@ -179,5 +162,6 @@ public class SearchActivity extends AppCompatActivity {
             }
 
         });
+
     }
 }
