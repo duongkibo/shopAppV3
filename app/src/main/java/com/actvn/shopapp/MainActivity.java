@@ -21,16 +21,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.actvn.shopapp.fragment.CartFragment;
 import com.actvn.shopapp.fragment.ProfileFragment;
 import com.actvn.shopapp.fragment.StoreFragment;
 import com.actvn.shopapp.login.logout.LogoutActivity;
-import com.actvn.shopapp.search.SearchActivity;
+import com.actvn.shopapp.views.SearchActivity;
 import com.actvn.shopapp.search.SearchSuggestions;
-import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.views.HelpActivity;
 import com.actvn.shopapp.views.LocatorActivity;
 import com.actvn.shopapp.views.QuestionActivity;

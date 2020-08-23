@@ -1,4 +1,4 @@
-package com.actvn.shopapp.fragment;
+package com.actvn.shopapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,43 +12,41 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
-import com.actvn.shopapp.api.model.Phone;
+import com.actvn.shopapp.api.model.Headphone;
+import com.actvn.shopapp.api.model.Tablet;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> {
-    private ArrayList<Phone> phoneList;
+public class HeadphoneAdapter extends RecyclerView.Adapter<HeadphoneAdapter.ViewHolder> {
+    private ArrayList<Headphone> headphones;
     private Context context;
 
-    public PhoneAdapter(ArrayList<Phone> phoneList, Context context) {
-        this.phoneList = phoneList;
+    public HeadphoneAdapter(ArrayList<Headphone> headphones, Context context) {
+        this.headphones = headphones;
         this.context = context;
     }
-
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parse_item, null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        Phone phone = phoneList.get(position);
-        holder.txtTitle.setText(phone.getTitle());
-        holder.txtCost.setText((phone.getCost()));
-        Picasso.get().load(phone.getImgUrl()).into(holder.imgItem);
-
+        Headphone headphone = headphones.get(position);
+        holder.txtTitle.setText(headphone.getTitle());
+        holder.txtCost.setText((headphone.getCost()));
+        Picasso.get().load(headphone.getImgUrl()).into(holder.imgItem);
     }
+
 
     @Override
     public int getItemCount() {
-        return phoneList.size();
+        return headphones.size();
     }
 
 
@@ -60,10 +58,10 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardViewProduct);
-            imgItem = itemView.findViewById(R.id.img);
-            txtTitle = itemView.findViewById(R.id.txtTitle);
-            txtCost = itemView.findViewById(R.id.txtCost);
+            cardView = itemView.findViewById(R.id.cardviewPhone);
+            imgItem = itemView.findViewById(R.id.imgItemPhone);
+            txtTitle = itemView.findViewById(R.id.txtTitlePhone);
+            txtCost = itemView.findViewById(R.id.txtCostPhone);
         }
     }
 }

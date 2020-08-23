@@ -19,8 +19,7 @@ import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.fragment.ProfileFragment;
-import com.actvn.shopapp.login.logout.LogoutActivity;
-import com.actvn.shopapp.register.RegisterActivity;
+import com.actvn.shopapp.views.RegisterActivity;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
 

@@ -1,4 +1,4 @@
-package com.actvn.shopapp.fragment;
+package com.actvn.shopapp.adapter;
 
 
 import android.content.Context;
@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 
 import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Properties;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> {
     public static final String PRODUCT_URL = "http://app.baomoiday.net/public/";

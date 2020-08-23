@@ -26,13 +26,18 @@
         <activity android:name=".order.OrderActivity"/>
         <activity android:name=".views.ProptiesActivity"/>
         <activity android:name=".DetailActivity" />
-        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".views.RegisterActivity" />
         <activity android:name=".login.logout.LogoutActivity" />
         <activity android:name=".login.LoginActivity" />
+
         <activity android:name=".views.LocatorActivity" />
         <activity android:name=".views.TermActivity" />
         <activity android:name=".views.HelpActivity" />
         <activity android:name=".views.QuestionActivity" />
+
+        <activity android:name=".views.TabletActivity"/>
+        <activity android:name=".views.LaptopActivity"/>
+        <activity android:name=".views.HeadphoneActivity"/>
         <activity android:name=".views.PhoneActivity" />
         <activity android:name=".WellcomeActivity" />
 
@@ -57,7 +62,7 @@
         </activity>
 
         <activity
-            android:name=".search.SearchActivity"
+            android:name=".views.SearchActivity"
             android:theme="@style/searchView">
             <meta-data
                 android:name="android.app.searchable"

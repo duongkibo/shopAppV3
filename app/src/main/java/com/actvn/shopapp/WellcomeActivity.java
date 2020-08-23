@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.actvn.shopapp.login.LoginActivity;
-import com.actvn.shopapp.register.RegisterActivity;
+import com.actvn.shopapp.views.RegisterActivity;
 
 public class WellcomeActivity extends AppCompatActivity implements View.OnClickListener {
 

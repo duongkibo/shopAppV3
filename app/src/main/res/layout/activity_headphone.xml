@@ -6,7 +6,7 @@
     android:background="@color/gray">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPhone"
+        android:id="@+id/toolbarHeadphone"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/green"
@@ -18,8 +18,8 @@
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="90dp"
-            android:text="Phone"
+            android:layout_marginLeft="110dp"
+            android:text="Headphone"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -27,11 +27,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPhone"
+            android:id="@+id/rvHeadphone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent">

@@ -16,11 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.actvn.shopapp.R;
 
+import com.actvn.shopapp.adapter.StoreAdapter;
 import com.actvn.shopapp.api.model.Data;
+import com.actvn.shopapp.api.model.Headphone;
 import com.actvn.shopapp.api.model.Products;
+import com.actvn.shopapp.api.model.Tablet;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.utils.ConstApp;
+import com.actvn.shopapp.views.HeadphoneActivity;
+import com.actvn.shopapp.views.LaptopActivity;
 import com.actvn.shopapp.views.PhoneActivity;
+import com.actvn.shopapp.views.TabletActivity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 
@@ -114,21 +120,24 @@ public class StoreFragment extends Fragment {
         cardViewFish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), LaptopActivity.class);
+                startActivity(intent);
             }
         });
 
         cardViewFruits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), TabletActivity.class);
+                startActivity(intent);
             }
         });
 
         cardViewVegetable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), HeadphoneActivity.class);
+                startActivity(intent);
             }
         });
     }

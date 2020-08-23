@@ -1,11 +1,8 @@
-package com.actvn.shopapp.search;
+package com.actvn.shopapp.views;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,12 +18,10 @@ import com.actvn.shopapp.R;
 import com.actvn.shopapp.api.model.Data;
 import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.service.UserService;
-import com.actvn.shopapp.search.SearchAdapter;
-import com.actvn.shopapp.register.RegisterActivity;
+import com.actvn.shopapp.adapter.SearchAdapter;
 import com.actvn.shopapp.utils.ConstApp;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -37,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
 
 public class SearchActivity extends AppCompatActivity {
 
