@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,25 +39,27 @@ public class LaptopActivity extends AppCompatActivity {
         setContentView(R.layout.activity_laptop);
         initView();
         actionToolbar();
+    }
+
+    private void initView() {
+        toolbarLaptop = findViewById(R.id.toolbarLaptop);
         rvLaptop = findViewById(R.id.rvLaptop);
         progressBar = findViewById(R.id.progressBar);
 
         rvLaptop.setHasFixedSize(true);
         rvLaptop.setLayoutManager(new LinearLayoutManager(this));
+        rvLaptop.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         laptopAdapter = new LaptopAdapter(laptops,this);
         rvLaptop.setAdapter(laptopAdapter);
 
         Content content = new Content();
         content.execute();
-    }
 
-    private void initView() {
-        toolbarLaptop = findViewById(R.id.toolbarLaptop);
-        setSupportActionBar(toolbarLaptop);
 
     }
 
     private void actionToolbar() {
+        setSupportActionBar(toolbarLaptop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //toolbarSearch.setNavigationIcon(R.drawable.ic_arrow_back_24);
         toolbarLaptop.setNavigationOnClickListener(new View.OnClickListener() {

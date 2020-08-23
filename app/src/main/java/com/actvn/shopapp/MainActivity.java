@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.mnNotify:
-                Intent intent1 = new Intent(getApplicationContext(), LogoutActivity.class);
-                startActivity(intent1);
                 break;
         }
         return super.onOptionsItemSelected(item);

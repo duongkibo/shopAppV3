@@ -1,9 +1,9 @@
 package com.actvn.shopapp.api.model;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Detail {
+
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -158,6 +158,5 @@ public class Detail {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
 
 }

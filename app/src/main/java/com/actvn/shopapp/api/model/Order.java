@@ -1,9 +1,9 @@
 package com.actvn.shopapp.api.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class Order {
     @SerializedName("id")
@@ -99,9 +99,6 @@ public class Order {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("details")
-    @Expose
-    private List<Detail> details = null;
 
     public Integer getId() {
         return id;
@@ -350,13 +347,4 @@ public class Order {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    public List<Detail> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<Detail> details) {
-        this.details = details;
-    }
-
 }

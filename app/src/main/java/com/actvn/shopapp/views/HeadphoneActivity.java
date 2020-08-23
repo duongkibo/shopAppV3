@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,11 +39,17 @@ public class HeadphoneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_headphone);
         initView();
         actionToolbar();
+
+    }
+
+    private void initView() {
+        toolbarHeadphone = findViewById(R.id.toolbarHeadphone);
         rvHeadphone = findViewById(R.id.rvHeadphone);
         progressBar = findViewById(R.id.progressBar);
 
         rvHeadphone.setHasFixedSize(true);
         rvHeadphone.setLayoutManager(new LinearLayoutManager(this));
+        rvHeadphone.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         headphoneAdapter = new HeadphoneAdapter(headphones, this);
         rvHeadphone.setAdapter(headphoneAdapter);
 
@@ -51,13 +58,8 @@ public class HeadphoneActivity extends AppCompatActivity {
 
     }
 
-    private void initView() {
-        toolbarHeadphone = findViewById(R.id.toolbarHeadphone);
-        setSupportActionBar(toolbarHeadphone);
-
-    }
-
     private void actionToolbar() {
+        setSupportActionBar(toolbarHeadphone);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //toolbarSearch.setNavigationIcon(R.drawable.ic_arrow_back_24);
         toolbarHeadphone.setNavigationOnClickListener(new View.OnClickListener() {

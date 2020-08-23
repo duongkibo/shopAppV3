@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 
 public class ProptiesActivity extends AppCompatActivity {
     private  ImageView imageView;
-    private  TextView tvName, tvMoney;
+    private  TextView tvName, tvMoney, tvLorem;
     private ImageButton btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,10 @@ public class ProptiesActivity extends AppCompatActivity {
       String money =  intent.getStringExtra("money");
       String name = intent.getStringExtra("name");
       String url = intent.getStringExtra("imgs");
+      //String content = intent.getStringExtra("content");
       tvMoney.setText(money);
       tvName.setText(name);
+    //  tvLorem.setText(content);
       Glide.with(this).load(url).into(imageView);
       btnBack.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -41,6 +43,7 @@ public class ProptiesActivity extends AppCompatActivity {
         imageView = findViewById(R.id.image_product_id);
         tvName = findViewById(R.id.name_product_id);
         tvMoney = findViewById(R.id.tv_currency);
+        tvLorem = findViewById(R.id.tv_lorem);
         btnBack = findViewById(R.id.back_to_parent);
     }
     @Override

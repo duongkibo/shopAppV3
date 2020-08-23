@@ -176,14 +176,13 @@ public class ProfileFragment extends Fragment {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-               if(response.body()!=null)
-               {
-                   user = response.body();
-                   txtNameProfile.setText(user.getName());
-                   txtEmailProfile.setText(user.getEmail());
-                   txtPhoneProfile.setText(user.getPhone());
-                   txtAddressProfile.setText(user.getAddress1());
-               }
+                if (response.body() != null) {
+                    user = response.body();
+                    txtNameProfile.setText(user.getName());
+                    txtEmailProfile.setText(user.getEmail());
+                    txtPhoneProfile.setText(user.getPhone());
+                    txtAddressProfile.setText(user.getAddress1());
+                }
 
             }
 

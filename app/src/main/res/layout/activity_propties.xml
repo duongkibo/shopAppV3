@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/detail"
+    android:background="@drawable/detail_fix"
     tools:context=".views.ProptiesActivity">
 
     <ImageButton
@@ -109,7 +109,6 @@
     android:layout_height="wrap_content">
     <TextView
         android:layout_marginTop="@dimen/_32sdp"
-
         android:id="@+id/tv_lorem"
         android:layout_width="@dimen/_286sdp"
         android:layout_height="wrap_content"

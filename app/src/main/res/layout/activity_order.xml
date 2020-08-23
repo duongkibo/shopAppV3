@@ -24,6 +24,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_20sdp"
+            android:id="@+id/txtOrder"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewOrder"
             android:layout_width="match_parent"

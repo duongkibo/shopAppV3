@@ -43,6 +43,7 @@ public class OrderActivity extends AppCompatActivity {
     private List<Detail> details = new ArrayList<>();
 
     private Toolbar toolbarOrder;
+    private TextView txtOrderTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,9 @@ public class OrderActivity extends AppCompatActivity {
 
     private void initView() {
         toolbarOrder = findViewById(R.id.toolbarOrder);
+
+        txtOrderTextView = findViewById(R.id.txtOrder);
+
         orderAdapter = new OrderAdapter(this, details, datas);
         recyclerView = findViewById(R.id.recyclerViewOrder);
         recyclerView.setHasFixedSize(true);
@@ -95,7 +99,7 @@ public class OrderActivity extends AppCompatActivity {
         call.enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
-                if (response != null){
+                if (response.body() != null) {
                     Toast.makeText(getApplicationContext(), "dd", Toast.LENGTH_SHORT).show();
 
                 }
@@ -103,8 +107,10 @@ public class OrderActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Order> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "d555d", Toast.LENGTH_SHORT).show();
 
             }
         });
+
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.actvn.shopapp.login.LoginActivity;
@@ -15,6 +16,7 @@ public class WellcomeActivity extends AppCompatActivity implements View.OnClickL
 
     private Button btnSignIn;
     private TextView btnSignUp;
+    private ImageView imgClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,11 @@ public class WellcomeActivity extends AppCompatActivity implements View.OnClickL
     public void innit() {
         btnSignIn = findViewById(R.id.btnSignIn);
         btnSignUp = findViewById(R.id.btnSignUp);
+        imgClose = findViewById(R.id.imgClose);
 
         btnSignIn.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
+        imgClose.setOnClickListener(this);
 
     }
 
@@ -47,6 +51,11 @@ public class WellcomeActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
 
+            case R.id.imgClose:
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
         }
 
     }

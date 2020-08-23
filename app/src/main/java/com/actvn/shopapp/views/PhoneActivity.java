@@ -38,26 +38,27 @@ public class PhoneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phone);
         initView();
         actionToolbar();
+
+    }
+
+    private void initView() {
+        toolbarPhone = findViewById(R.id.toolbarPhone);
         rvPhone = findViewById(R.id.rvPhone);
         progressBar = findViewById(R.id.progressBar);
 
         rvPhone.setHasFixedSize(true);
         rvPhone.setLayoutManager(new LinearLayoutManager(this));
-        //rvPhone.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
+        rvPhone.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         phoneAdapter = new PhoneAdapter(phones,this);
         rvPhone.setAdapter(phoneAdapter);
 
         Content content = new Content();
         content.execute();
-    }
-
-    private void initView() {
-        toolbarPhone = findViewById(R.id.toolbarPhone);
-        setSupportActionBar(toolbarPhone);
 
     }
 
     private void actionToolbar() {
+        setSupportActionBar(toolbarPhone);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //toolbarSearch.setNavigationIcon(R.drawable.ic_arrow_back_24);
         toolbarPhone.setNavigationOnClickListener(new View.OnClickListener() {

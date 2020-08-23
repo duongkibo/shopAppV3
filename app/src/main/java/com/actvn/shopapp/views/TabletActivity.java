@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,11 +39,17 @@ public class TabletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tablet);
         initView();
         actionToolbar();
+
+    }
+
+    private void initView() {
+        toolbarTablet = findViewById(R.id.toolbarTablet);
         rvTablet = findViewById(R.id.rvTablet);
         progressBar = findViewById(R.id.progressBar);
 
         rvTablet.setHasFixedSize(true);
         rvTablet.setLayoutManager(new LinearLayoutManager(this));
+        rvTablet.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
         tabletAdapter = new TabletAdapter(tablets,this);
         rvTablet.setAdapter(tabletAdapter);
 
@@ -51,13 +58,8 @@ public class TabletActivity extends AppCompatActivity {
 
     }
 
-    private void initView() {
-        toolbarTablet = findViewById(R.id.toolbarTablet);
-        setSupportActionBar(toolbarTablet);
-
-    }
-
     private void actionToolbar() {
+        setSupportActionBar(toolbarTablet);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //toolbarSearch.setNavigationIcon(R.drawable.ic_arrow_back_24);
         toolbarTablet.setNavigationOnClickListener(new View.OnClickListener() {
