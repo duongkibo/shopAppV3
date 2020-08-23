@@ -34,7 +34,7 @@ public interface UserService {
     Call<User> getUser(@Header("Authorization") String access_token);
 
     @GET("api/auth/orders")
-    Call<Order> getOrder(@Header("Authorization") String access_token);
+    Call<Order> getOrder(@Header("Authorization") String token);
 
     @GET("api/products")
     Call<Products> getProducts();

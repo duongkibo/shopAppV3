@@ -3,6 +3,7 @@ package com.actvn.shopapp.order;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import com.actvn.shopapp.api.model.User;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,10 +64,12 @@ public class OrderActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
         userService = retrofit.create(UserService.class);
-
+        loadJson();
         initView();
         actionToolbar();
-        loadJson();
+
+
+
     }
 
     private void initView() {
@@ -94,19 +99,24 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     private void loadJson() {
-        String token_type = "Bearer ";
-        Call<Order> call = userService.getOrder(String.valueOf(token_type + ShareStoreUtils.getToken(getApplicationContext())));
+        String token_type ="Bearer"+" "+ShareStoreUtils.getToken(this);
+        Call<Order> call = userService.getOrder(token_type);
         call.enqueue(new Callback<Order>() {
             @Override
-            public void onResponse(Call<Order> call, Response<Order> response) {
-                if (response.body() != null) {
+            public void onResponse(@NotNull Call<Order> call, @NotNull Response<Order> response) {
+                if (response.body()!= null) {
+
                     Toast.makeText(getApplicationContext(), "dd", Toast.LENGTH_SHORT).show();
 
+                }
+                else
+                {
+                    Log.d("null data", "sssssss");
                 }
             }
 
             @Override
-            public void onFailure(Call<Order> call, Throwable t) {
+            public void onFailure(@NotNull Call<Order> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "d555d", Toast.LENGTH_SHORT).show();
 
             }

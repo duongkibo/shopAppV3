@@ -61,5 +61,7 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'android.arch.persistence.room:runtime:+'
+    annotationProcessor "android.arch.persistence.room:compiler:+"
 
 }

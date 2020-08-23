@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -25,6 +26,7 @@ import com.actvn.shopapp.MainActivity;
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.WellcomeActivity;
 import com.actvn.shopapp.databinding.ActivityViewsSliderBinding;
+import com.actvn.shopapp.roomdatabase.MyDatabase;
 
 public class ViewsSliderActivity extends AppCompatActivity {
 
@@ -32,7 +34,8 @@ public class ViewsSliderActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private ActivityViewsSliderBinding binding;
-
+    public static MyDatabase myDatabase;
+    TextView cartcount;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,9 +56,32 @@ public class ViewsSliderActivity extends AppCompatActivity {
         binding = ActivityViewsSliderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initView();
+        myDatabase= Room.databaseBuilder(getApplicationContext(),MyDatabase.class,"My_Cart").allowMainThreadQueries().build();
 
 
     }
+    private void updatacartcount() {
+        if (cartcount==null)return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (myDatabase.cartDao().countCart()==0)
+                    cartcount.setVisibility(View.INVISIBLE);
+                else {
+                    cartcount.setVisibility(View.VISIBLE);
+                    cartcount.setText(String.valueOf(myDatabase.cartDao().countCart()));
+                }
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updatacartcount();
+    }
+
 
 
     private void initView() {
@@ -65,7 +91,7 @@ public class ViewsSliderActivity extends AppCompatActivity {
                 R.layout.slide_three
                 //R.layout.slide_four
                 };
-
+        cartcount = findViewById(R.id.txtcartcount);
         mAdapter = new ViewsSliderAdapter();
         binding.viewPager.setAdapter(mAdapter);
         binding.viewPager.registerOnPageChangeCallback(pageChangeCallback);
@@ -106,6 +132,7 @@ public class ViewsSliderActivity extends AppCompatActivity {
     private int getItem(int i){
         return binding.viewPager.getCurrentItem() + 1;
     }
+
 
     private void launchWellcomeScreen(){
         Intent intent = new Intent(this, WellcomeActivity.class);

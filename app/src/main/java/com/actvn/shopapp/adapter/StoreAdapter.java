@@ -59,6 +59,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
                 intent.putExtra("imgs",PRODUCT_URL + data.getImage());
                 intent.putExtra("money",data.getCost()+"đ");
                 intent.putExtra("name",data.getDescriptions().get(1).getName());
+                intent.putExtra("id",data.getId());
                 context.startActivity(intent);
 
             }

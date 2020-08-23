@@ -1,5 +1,6 @@
 package com.actvn.shopapp;
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Color;
