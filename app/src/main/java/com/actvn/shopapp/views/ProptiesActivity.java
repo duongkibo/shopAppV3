@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actvn.shopapp.MainActivity;
 import com.actvn.shopapp.R;
 import com.actvn.shopapp.roomdatabase.Cart;
 import com.bumptech.glide.Glide;
@@ -58,6 +59,9 @@ public class ProptiesActivity extends AppCompatActivity {
                           Toast.makeText(ProptiesActivity.this, "You are Already added to cart!", Toast.LENGTH_SHORT).show();
 
                       }
+                      Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                      startActivity(intent1);
+                      finish();
 
                   }
               }

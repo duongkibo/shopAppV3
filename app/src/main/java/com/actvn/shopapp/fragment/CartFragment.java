@@ -94,8 +94,6 @@ public class CartFragment extends Fragment  {
             tvcount.setText(String.valueOf(count));
         }
 
-
-
     }
 
 
