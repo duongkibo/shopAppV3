@@ -2,14 +2,19 @@ package com.actvn.shopapp.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +24,7 @@ import com.actvn.shopapp.api.model.Login;
 import com.actvn.shopapp.api.model.ResultLogin;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.fragment.ProfileFragment;
+import com.actvn.shopapp.views.HeadphoneActivity;
 import com.actvn.shopapp.views.RegisterActivity;
 import com.actvn.shopapp.utils.ConstApp;
 import com.actvn.shopapp.utils.ShareStoreUtils;
@@ -41,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btnSignIN;
 
     private ProfileFragment profileFragment;
+    private ProgressBar progressBar;
 
     LinearLayout lnWrong;
 
@@ -80,6 +87,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtDismiss = findViewById(R.id.txtDismiss);
         lnWrong = findViewById(R.id.lnWrong);
 
+        progressBar = findViewById(R.id.progressBar);
+
         profileFragment = new ProfileFragment();
 
         btnSignIN.setOnClickListener(this);
@@ -101,6 +110,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     // neu ket noi thanh cong se luu token va chay toi man main
                     ShareStoreUtils.saveToken(LoginActivity.this, response.body().getAccessToken());
                     startMainActivity();
+
                 } else {
                     lnWrong.setVisibility(View.VISIBLE);
                 }
@@ -131,6 +141,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 lnWrong.setVisibility(View.INVISIBLE);
                 break;
             case R.id.btnSignIN_lo:
+                int current = progressBar.getProgress();
+                if (current >= progressBar.getMax()){
+                    current = 0;
+                }
+                progressBar.setProgress(current + 10);
                 login();
                 break;
             case R.id.txtSignUp:
@@ -143,4 +158,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
 }

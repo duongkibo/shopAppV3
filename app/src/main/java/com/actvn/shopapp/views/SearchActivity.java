@@ -124,7 +124,7 @@ public class SearchActivity extends AppCompatActivity {
         Call<Products> call;
         if (keyword.length() > 0){
             call = userService.getSearchProducts(keyword);
-            Toast.makeText(SearchActivity.this, keyword, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(SearchActivity.this, keyword, Toast.LENGTH_SHORT).show();
 
         } else {
             call = userService.getProducts();

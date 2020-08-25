@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,10 +25,14 @@ import com.actvn.shopapp.api.model.Products;
 import com.actvn.shopapp.api.model.Tablet;
 import com.actvn.shopapp.api.service.UserService;
 import com.actvn.shopapp.utils.ConstApp;
+import com.actvn.shopapp.views.CameraActivity;
+import com.actvn.shopapp.views.CameraSecurityActivity;
 import com.actvn.shopapp.views.HeadphoneActivity;
 import com.actvn.shopapp.views.LaptopActivity;
 import com.actvn.shopapp.views.PhoneActivity;
 import com.actvn.shopapp.views.TabletActivity;
+import com.actvn.shopapp.views.TvActivity;
+import com.actvn.shopapp.views.WatchActivity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 
@@ -47,6 +53,12 @@ public class StoreFragment extends Fragment {
     private CardView cardViewFish;
     private CardView cardViewFruits;
     private CardView cardViewVegetable;
+    private CardView cardViewTv, cardViewWatch, cardViewCamera, cardViewCameraSecurity;
+
+    private LinearLayout lnStore2;
+    private ImageView imgShow;
+    private ImageView imgHide;
+
     private View view;
     private StoreAdapter storeAdapter;
     private UserService userService;
@@ -102,11 +114,37 @@ public class StoreFragment extends Fragment {
         cardViewFish = view.findViewById(R.id.cardviewFish);
         cardViewFruits = view.findViewById(R.id.cardviewFruits);
         cardViewVegetable = view.findViewById(R.id.cardviewVegetables);
+        cardViewTv = view.findViewById(R.id.cardviewTv);
+        cardViewWatch = view.findViewById(R.id.cardviewWatch);
+        cardViewCamera = view.findViewById(R.id.cardviewCamera);
+        cardViewCameraSecurity = view.findViewById(R.id.cardviewCameraSecurity);
+
+        lnStore2 = view.findViewById(R.id.lnStore2);
+        imgShow = view.findViewById(R.id.imgShow);
+        imgHide = view.findViewById(R.id.imgHide);
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setAdapter(storeAdapter);
+
+        imgShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lnStore2.setVisibility(View.VISIBLE);
+                imgHide.setVisibility(View.VISIBLE);
+                imgShow.setVisibility(View.GONE);
+            }
+        });
+
+        imgHide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lnStore2.setVisibility(View.GONE);
+                imgShow.setVisibility(View.VISIBLE);
+                imgHide.setVisibility(View.GONE);
+            }
+        });
 
         cardViewMeat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +175,38 @@ public class StoreFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), HeadphoneActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TvActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewWatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), WatchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CameraActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewCameraSecurity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CameraSecurityActivity.class);
                 startActivity(intent);
             }
         });
